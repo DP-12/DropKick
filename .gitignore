@@ -1,0 +1,6 @@
+build/
+*.install.json
+*.vdf
+*.bak
+*.tmp
+*.log
