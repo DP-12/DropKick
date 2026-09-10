@@ -28,8 +28,8 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 This is the dedicated loader. Complete DropKick mod is here:
 https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 
-1. Download and extract the rc.2 Windows ZIP.
-2. Exit Steam/game and back up saves.
+1. Download and extract the `DropKickLoader-1.0.0-rc.2-windows.zip` .
+2. Exit Steam/game.
 3. Double-click `installer/DropKickSetup.exe`. 
 4. Click **Install / update** and confirm. 
 5. Restart Steam and normally Play.
@@ -41,15 +41,6 @@ To uninstall, close Steam/game and click **Uninstall loader**. Original launch o
 ### What uninstall changes
 
 The GUI's **Uninstall loader** action restores the recorded pre-install Steam launch options and moves the owned JAR, wrapper EXE and receipts into `DropKickLoader-backups` / `DropKickSteamLaunch-backups` in the game directory. It does not unsubscribe from Workshop, delete saves or mod files, or remove ReflectionEnabler. DropKick becomes unavailable; native shove remains. Reinstall a compatible loader to restore DropKick. Uninstall does not clean skill data from saves; back up saves before separately disabling the mod. On failure, partial files/backups may remain: retain the error and review rather than deleting backup folders or restoring an entire Steam profile indiscriminately.
-
-- Java 25 and exact supported game-class fingerprints are required. This is not blanket support for all Build 42 versions.
-- The packaged agent accepts vanilla classes and the audited ReflectionEnabler v2 GlobalObject for 42.20.2 (SHA-256 `4915be279b76f53f0e2eaabe529ef026f23e8c0066a21f48f887a3cb99ad9f8f`). ReflectionEnabler is optional and is not bundled, removed, or installed by this tool. Other revisions may be refused.
-- No ZombieBuddy dependency. Multiplayer is unsupported.
-- The agent hooks Lua initialization in memory and exposes dedicated impulse and blood-particle functions. No original game class is patched on disk.
-- The wrapper supplies the agent argument and Java DLL search directories only to its child game process. It does not modify system PATH.
-- Setup modifies this game's launch option in the selected Steam profile, installs its own EXE/JAR and receipts, and creates backups. Saves and other mods are not changed.
-- Unknown JVM wrappers/options and inherited Java option environment variables are refused. This is intentionally conservative, not a universal loader compatibility layer.
-- Software is unsigned. This candidate is not a guarantee against crashes or future game changes. Core gameplay has been tested on the author's environment; a clean third-party installation remains to be tested.
 
 ## Build from source
 
