@@ -9,7 +9,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 
 作者已实测 Steam 正常启动、保存重进、当前多模组组合，以及卸载后启动和重装恢复。未验证所有电脑或模组组合。
 
-1. 下载 Releases 中的 `DropKickLoader-1.0.0-rc.2-windows.zip`，完整解压，不要在压缩包内运行。
+1. 下载 Releases 中的 `DropKickLoader-1.0.0-windows.zip`，完整解压，不要在压缩包内运行。
 2. 完全退出游戏和 Steam（包括后台）。
 3. 双击 `installer/DropKickSetup.exe`。
 4. 点击“安装 / 更新”
@@ -28,7 +28,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 This is the dedicated loader. Complete DropKick mod is here:
 https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 
-1. Download and extract the `DropKickLoader-1.0.0-rc.2-windows.zip` .
+1. Download and extract the `DropKickLoader-1.0.0-windows.zip` .
 2. Exit Steam/game.
 3. Double-click `installer/DropKickSetup.exe`. 
 4. Click **Install / update** and confirm. 
