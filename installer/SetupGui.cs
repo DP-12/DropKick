@@ -21,28 +21,27 @@ internal sealed class SetupGui : Form {
         Text = "DropKick Setup"; ClientSize = new Size(820, 520);
         MinimumSize = new Size(700, 480); StartPosition = FormStartPosition.CenterScreen;
         Font = new Font("Segoe UI", 10); AutoScaleMode = AutoScaleMode.Dpi;
-        var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(14), ColumnCount = 2, RowCount = 7 };
+        var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(14), ColumnCount = 2, RowCount = 6 };
         layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100)); layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
-        var notice = new Label { AutoSize = true, Dock = DockStyle.Fill, Text = T("仅 Windows / 单人。请先完全退出 Steam 和游戏。\n本工具只安装加载器；仍需另行安装飞踢模组。\n卸载：恢复安装前的 Steam 启动选项，将本工具文件移入备份；\n保留存档、飞踢模组文件和 ReflectionEnabler。卸载后飞踢不可用，重装可恢复。", "Windows / single-player only. Exit Steam and the game completely.\nThis installs the loader only; install the DropKick mod separately.\nUninstall restores prior Steam launch options and moves owned files to backups.\nSaves, mod files and ReflectionEnabler remain. DropKick is disabled until reinstalled.") };
+        var notice = new Label { AutoSize = true, Dock = DockStyle.Fill, Text = T("仅 Windows / 单人。请先完全退出 Steam 和游戏。\n本工具只安装加载器；仍需另行安装飞踢模组。\n卸载：恢复安装前的 Steam 启动选项，将本工具文件移入备份。", "Windows / single-player only. Exit Steam and the game completely.\nThis installs the loader only; install the DropKick mod separately.\nUninstall restores prior Steam launch options and moves owned files to backups.") };
         layout.Controls.Add(notice, 0, 0); layout.SetColumnSpan(notice, 2);
-        layout.Controls.Add(new Label { AutoSize = true, Text = T("游戏目录（浏览并选择 ProjectZomboid64.exe）", "Game directory (browse to ProjectZomboid64.exe)") }, 0, 1);
-        game.Dock = DockStyle.Fill; layout.Controls.Add(game, 0, 2);
+        game.Dock = DockStyle.Fill; layout.Controls.Add(game, 0, 1);
         var gameBrowse = new Button { Text = T("浏览…", "Browse..."), Dock = DockStyle.Fill };
         gameBrowse.Click += delegate { using (var d = new OpenFileDialog { Filter = "ProjectZomboid64.exe|ProjectZomboid64.exe", CheckFileExists = true }) { if (d.ShowDialog(this) == DialogResult.OK) game.Text = Path.GetDirectoryName(d.FileName); } };
-        layout.Controls.Add(gameBrowse, 1, 2);
+        layout.Controls.Add(gameBrowse, 1, 1);
         var hint = new Label { AutoSize = true, Text = T("Steam 账号配置：Steam目录\\userdata\\账号数字目录\\config\\localconfig.vdf", "Steam profile: Steam folder\\userdata\\account ID\\config\\localconfig.vdf") };
-        layout.Controls.Add(hint, 0, 3); layout.SetColumnSpan(hint, 2);
-        profile.Dock = DockStyle.Fill; layout.Controls.Add(profile, 0, 4);
+        layout.Controls.Add(hint, 0, 2); layout.SetColumnSpan(hint, 2);
+        profile.Dock = DockStyle.Fill; layout.Controls.Add(profile, 0, 3);
         var profileBrowse = new Button { Text = T("浏览…", "Browse..."), Dock = DockStyle.Fill };
         profileBrowse.Click += delegate { using (var d = new OpenFileDialog { Filter = "Steam config|localconfig.vdf", CheckFileExists = true }) { if (d.ShowDialog(this) == DialogResult.OK) profile.Text = d.FileName; } };
-        layout.Controls.Add(profileBrowse, 1, 4);
+        layout.Controls.Add(profileBrowse, 1, 3);
         buttons.AutoSize = true; buttons.Dock = DockStyle.Fill;
         AddButton(T("安装 / 更新", "Install / update"), "Install", false);
         AddButton(T("卸载加载器", "Uninstall loader"), "Uninstall", false);
-        layout.Controls.Add(buttons, 0, 5); layout.SetColumnSpan(buttons, 2);
+        layout.Controls.Add(buttons, 0, 4); layout.SetColumnSpan(buttons, 2);
         log.Multiline = true; log.ReadOnly = true; log.ScrollBars = ScrollBars.Both; log.WordWrap = false; log.Dock = DockStyle.Fill;
-        layout.Controls.Add(log, 0, 6); layout.SetColumnSpan(log, 2);
-        for (int i = 0; i < 6; i++) layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        layout.Controls.Add(log, 0, 5); layout.SetColumnSpan(log, 2);
+        for (int i = 0; i < 5; i++) layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); Controls.Add(layout);
         game.DropDownWidth = profile.DropDownWidth = 760;
         DetectPaths();
@@ -112,8 +111,8 @@ internal sealed class SetupGui : Form {
                 if (!File.Exists(Path.Combine(root, name))) throw new Exception("Missing package file: " + name);
         } catch (Exception e) { MessageBox.Show(this, e.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         string confirmation = mode == "Uninstall" ? T(
-            "卸载加载器将：\n• 恢复本工具记录的安装前 Steam 启动选项。\n• 将加载器 JAR、启动包装 EXE 和安装记录移入游戏目录内的备份文件夹。\n• 保留存档、飞踢模组文件、其他模组和 ReflectionEnabler，不取消工坊订阅。\n\n卸载后游戏仍可从 Steam 普通启动，但飞踢会停用；使用兼容版本重新安装可恢复。\n若安装后手工修改过启动选项或本工具文件，会拒绝覆盖并提示错误。\n此操作不是从存档移除飞踢技能；如另行停用模组，仍建议先备份存档。\n\n请确认 Steam 与游戏已完全退出，并核对以下路径：",
-            "Uninstall will:\n• Restore the pre-install Steam launch options recorded by this tool.\n• Move its loader JAR, wrapper EXE and receipts into backup folders in the game directory.\n• Keep saves, DropKick files, other mods and ReflectionEnabler. Workshop subscriptions are unchanged.\n\nNormal Steam launch remains available, but DropKick is disabled until a compatible loader is reinstalled.\nManually changed launch options or owned files cause refusal instead of overwrite.\nThis does not remove the skill from saves. Back up saves before separately disabling the mod.\n\nExit Steam/game completely and confirm these paths:") : T("将修改下列游戏的启动配置，并创建备份。\n请确认账号路径正确，且 Steam 与游戏已经完全退出。", "This changes the game's launch setup and creates backups.\nConfirm the profile path and exit Steam/game completely.");
+            "卸载加载器将恢复本工具记录的安装前 Steam 启动选项。\n\n请确认 Steam 与游戏已完全退出，并核对以下路径：",
+            "Uninstall will restore the pre-install Steam launch options recorded by this tool.\n\nExit Steam/game completely and confirm these paths:") : T("将修改下列游戏的启动配置，并创建备份。\n请确认账号路径正确，且 Steam 与游戏已经完全退出。", "This changes the game's launch setup and creates backups.\nConfirm the profile path and exit Steam/game completely.");
         if (!preview && MessageBox.Show(this, confirmation + "\n\n" + gamePath + "\n" + configPath, Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) return;
         // Paths are passed as child-only environment data, never interpolated into executable code.
         string code = "$ErrorActionPreference='Stop'; [Console]::OutputEncoding=New-Object Text.UTF8Encoding($false); try { & $env:DK_SETUP_SCRIPT -Mode $env:DK_SETUP_MODE -GameDirectory $env:DK_SETUP_GAME -SteamLocalConfig $env:DK_SETUP_CONFIG -WhatIf:($env:DK_SETUP_PREVIEW -eq '1'); exit 0 } catch { [Console]::Error.WriteLine($_.ToString()); exit 1 }";
