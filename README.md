@@ -26,11 +26,11 @@ Windows / Steam normal launch / Project Zomboid single-player.
 
 This is the dedicated loader, not the complete DropKick mod. Install the matching Lua/animation/audio mod separately. A Workshop link is not yet supplied.
 
-1.Download and extract the rc.2 Windows ZIP.
-2.Exit Steam/game and back up saves.
-3.Double-click `installer/DropKickSetup.exe`. 
-4.Click **Install / update** and confirm. 
-5.Restart Steam and normally Play.
+1. Download and extract the rc.2 Windows ZIP.
+2. Exit Steam/game and back up saves.
+3. Double-click `installer/DropKickSetup.exe`. 
+4. Click **Install / update** and confirm. 
+5. Restart Steam and normally Play.
 
 To uninstall, close Steam/game and click **Uninstall loader**. Original launch options are restored and owned files are moved to recoverable backups.
 
