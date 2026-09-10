@@ -2,11 +2,12 @@
 
 Windows / Steam normal launch / Project Zomboid single-player.
 
-这是飞踢模组的专用 Java 桥接和一次性启动配置工具，不是完整模组。Lua、动画和音效需要另行安装 DropKick 模组；本仓库暂不提供工坊订阅链接。
+这是飞踢模组的专用 Java 桥接和一次性启动配置工具，完整模组请到创意工坊订阅链接：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 
 ## 中文安装说明
 
-当前发布为候选版：作者已实测 Steam 正常启动、保存重进、当前多模组组合，以及卸载后启动和重装恢复。未验证所有电脑或模组组合。
+作者已实测 Steam 正常启动、保存重进、当前多模组组合，以及卸载后启动和重装恢复。未验证所有电脑或模组组合。
 
 1. 下载 Releases 中的 `DropKickLoader-1.0.0-rc.2-windows.zip`，完整解压，不要在压缩包内运行。
 2. 完全退出游戏和 Steam（包括后台）。
@@ -16,7 +17,7 @@ Windows / Steam normal launch / Project Zomboid single-player.
 
 ### 卸载与更新
 
-图形入口中的“卸载加载器”只卸载 Java 加载部分，不取消工坊订阅，不删除飞踢模组文件、其他模组或存档。卸载后飞踢还会显示，但不可用，空格恢复原版推搡；重新安装加载器后可恢复飞踢功能。
+图形入口中的“卸载加载器”只卸载 Java 加载部分，不取消工坊订阅，不删除飞踢模组文件、其他模组或存档。卸载后飞踢不可用，会弹出阻拦提示，按空格变成原版推搡；重新安装加载器后可恢复飞踢功能。
 
 卸载会将本工具的 JAR、启动包装 EXE 及安装记录移入游戏目录里的 `DropKickLoader-backups` 和 `DropKickSteamLaunch-backups`，并恢复安装时记录的原 Steam 启动选项。它不是存档清理工具，不会从存档中删除技能数据。
 
@@ -24,7 +25,8 @@ Windows / Steam normal launch / Project Zomboid single-player.
 
 ## English
 
-This is the dedicated loader, not the complete DropKick mod. Install the matching Lua/animation/audio mod separately. A Workshop link is not yet supplied.
+This is the dedicated loader. Complete DropKick mod is here:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 
 1. Download and extract the rc.2 Windows ZIP.
 2. Exit Steam/game and back up saves.
