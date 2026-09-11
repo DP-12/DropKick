@@ -1,6 +1,9 @@
-# DropKick Loader
+# DropKick Loader【已过时】
 
-Windows / Steam normal launch / Project Zomboid single-player.
+【本加载器已弃用，新版飞踢模组将使用ZombieBuddy作为加载器，已经安装本加载器的玩家仍可兼容运行】
+
+ZombieBuddy↓
+https://steamcommunity.com/workshop/filedetails/?id=3619862853
 
 这是飞踢模组的专用 Java 桥接和一次性启动配置工具，完整模组请到创意工坊订阅链接：
 https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
@@ -24,6 +27,11 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
 不建议采用别的方法自行卸载，可能会出现问题。
 
 ## English
+
+[This loader is legacy. Please install ZombieBuddy instead. Existing user is still compatible]
+
+ZombieBuddy↓
+https://steamcommunity.com/workshop/filedetails/?id=3619862853
 
 This is the dedicated loader. Complete DropKick mod is here:
 https://steamcommunity.com/sharedfiles/filedetails/?id=3798908307
